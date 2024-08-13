@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+  input {
+  width:600px;
+  height:100px;
+  font-size:70px;
+  }
+  button {
+  text-align:center;
+  font-size:150px;
+  }
+  h1 {
+  font-size:100px;
+  text-align:center;
+  }
+  p{
+  font-size:70px;
+  text-align:center;
+  }
+  .center {
+  text-align:center;
+  }
+  #demo {
+  font-size:80px;
+  color:blue;
+  text-align:center;
+  }
+  </style>
+</head>
+<body>
+  <h1>猜数字小游戏</h1>
+  <div class='center'>
+  <input id='test'/>
+  </div>
+  <div class='center'>
+  <button onclick='myFunction()'>确认</button>
+  </div>
+  <p>输入你要猜的数字，然后点击确认按钮，范围为1~100<br>底下会有提示</p>
+  <p id='demo'>我是提示</p>
+
+  <script>
+let a; // 定义随机数，初始值为undefined
+let c=0;
+function myFunction() {
+  if (a === undefined) {
+    a = Math.ceil(Math.random() * 100); // 只在a未被赋值时生成随机数
+  }
+
+  let b = document.getElementById("test").value;
+  if (b < a) {
+    document.getElementById("demo").innerHTML = '小了';
+  } else if (b > a) {
+    document.getElementById("demo").innerHTML = '大了';
+  } else {
+    document.getElementById("demo").innerHTML = '恭喜你，答对了';
+  c = c+1;
+  document.getElementById("defen").innerHTML=c;
+    // 游戏结束时，你可以选择重置a以便开始新游戏
+  }
+}
+
+// 为了演示，这里添加一个重置游戏的函数
+function resetGame() {
+  a = undefined;
+  document.getElementById("demo").innerHTML = '';
+  document.getElementById("test").value = '';
+}
+</script>
+
+<!-- 添加一个重置按钮 -->
+<div class='center'>
+<button onclick='resetGame()'>重置游戏</button>
+<p>得分:</p><p id='defen'>0</p>
+</div>
+</body>
+</html>
